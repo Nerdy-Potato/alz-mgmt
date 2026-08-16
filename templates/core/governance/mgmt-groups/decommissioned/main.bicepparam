@@ -3,7 +3,6 @@ using './main.bicep'
 // General Parameters
 param parLocations = [
   'westus2'
-  ''
 ]
 param parEnableTelemetry = true
 
@@ -13,7 +12,9 @@ param decommissionedConfig = {
   managementGroupParentId: 'np-alz'
   managementGroupIntermediateRootName: 'np-alz'
   managementGroupDisplayName: 'Nerdy Potato Decommissioned'
-  managementGroupDoNotEnforcePolicyAssignments: []
+  managementGroupDoNotEnforcePolicyAssignments: [
+    'Enforce-ALZ-Decomm'
+  ]
   managementGroupExcludedPolicyAssignments: []
   customerRbacRoleDefs: []
   customerRbacRoleAssignments: []

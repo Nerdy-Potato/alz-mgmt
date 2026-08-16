@@ -3,7 +3,6 @@ using './main.bicep'
 // General Parameters
 param parLocations = [
   'westus2'
-  ''
 ]
 param parEnableTelemetry = true
 
@@ -13,14 +12,20 @@ param platformIdentityConfig = {
   managementGroupParentId: 'np-platform'
   managementGroupIntermediateRootName: 'np-alz'
   managementGroupDisplayName: 'Nerdy Potato Identity'
-  managementGroupDoNotEnforcePolicyAssignments: []
-  managementGroupExcludedPolicyAssignments: []
+  managementGroupDoNotEnforcePolicyAssignments: [
+    'Deny-MgmtPorts-Internet'
+    'Deny-Public-IP'
+    'Deny-Subnet-Without-Nsg'
+  ]
+  managementGroupExcludedPolicyAssignments: [
+    'Deploy-VM-Backup'
+  ]
   customerRbacRoleDefs: []
   customerRbacRoleAssignments: []
   customerPolicyDefs: []
   customerPolicySetDefs: []
   customerPolicyAssignments: []
-  subscriptionsToPlaceInManagementGroup: ['']
+  subscriptionsToPlaceInManagementGroup: []
   waitForConsistencyCounterBeforeCustomPolicyDefinitions: 10
   waitForConsistencyCounterBeforeCustomPolicySetDefinitions: 10
   waitForConsistencyCounterBeforeCustomRoleDefinitions: 10

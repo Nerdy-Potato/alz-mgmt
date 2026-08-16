@@ -3,7 +3,6 @@ using 'main.bicep'
 // General Parameters
 param parLocations = [
   'westus2'
-  ''
 ]
 param parGlobalResourceLock = {
   name: 'GlobalResourceLock'
@@ -29,15 +28,13 @@ param parLogAnalyticsWorkspaceName = 'law-alz-${parLocations[0]}'
 param parLogAnalyticsWorkspaceLocation = parLocations[0]
 param parLogAnalyticsWorkspaceSku = 'PerGB2018'
 param parLogAnalyticsWorkspaceCapacityReservationLevel = 100
-param parLogAnalyticsWorkspaceLogRetentionInDays = 365
-param parLogAnalyticsWorkspaceDailyQuotaGb = null
+param parLogAnalyticsWorkspaceLogRetentionInDays = 30
+param parLogAnalyticsWorkspaceDailyQuotaGb = 1
 param parLogAnalyticsWorkspaceReplication = null
 param parLogAnalyticsWorkspaceFeatures = null
 param parLogAnalyticsWorkspaceDataExports = null
 param parLogAnalyticsWorkspaceDataSources = null
-param parLogAnalyticsWorkspaceSolutions = [
-  'ChangeTracking'
-]
+param parLogAnalyticsWorkspaceSolutions = []
 
 // Data Collection Rule Parameters
 param parUserAssignedIdentityName = 'mi-alz-${parLocations[0]}'

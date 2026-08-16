@@ -3,7 +3,6 @@ using './main.bicep'
 // General Parameters
 param parLocations = [
   'westus2'
-  ''
 ]
 param parEnableTelemetry = true
 
@@ -13,7 +12,9 @@ param landingZonesLocalConfig = {
   managementGroupParentId: 'np-landingzones'
   managementGroupIntermediateRootName: 'np-alz'
   managementGroupDisplayName: 'Nerdy Potato Local'
-  managementGroupDoNotEnforcePolicyAssignments: []
+  managementGroupDoNotEnforcePolicyAssignments: [
+    'Enforce-ALDO-Services'
+  ]
   managementGroupExcludedPolicyAssignments: []
   customerRbacRoleDefs: []
   customerRbacRoleAssignments: []

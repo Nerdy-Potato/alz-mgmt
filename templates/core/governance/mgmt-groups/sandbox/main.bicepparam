@@ -3,7 +3,6 @@ using './main.bicep'
 // General Parameters
 param parLocations = [
   'westus2'
-  ''
 ]
 param parEnableTelemetry = true
 
@@ -13,7 +12,9 @@ param sandboxConfig = {
   managementGroupParentId: 'np-alz'
   managementGroupIntermediateRootName: 'np-alz'
   managementGroupDisplayName: 'Nerdy Potato Sandbox'
-  managementGroupDoNotEnforcePolicyAssignments: []
+  managementGroupDoNotEnforcePolicyAssignments: [
+    'Enforce-ALZ-Sandbox'
+  ]
   managementGroupExcludedPolicyAssignments: []
   customerRbacRoleDefs: []
   customerRbacRoleAssignments: []
