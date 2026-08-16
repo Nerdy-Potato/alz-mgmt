@@ -3,7 +3,6 @@ using './main.bicep'
 // General Parameters
 param parLocations = [
   'westus2'
-  ''
 ]
 param parEnableTelemetry = true
 
@@ -12,8 +11,25 @@ param intRootConfig = {
   managementGroupName: 'np-alz'
   managementGroupParentId: '3b14ce70-8bea-4d11-9e2c-6b4a04c8010d'
   managementGroupDisplayName: 'Nerdy Potato Azure Landing Zones'
-  managementGroupDoNotEnforcePolicyAssignments: []
-  managementGroupExcludedPolicyAssignments: []
+  // Keep the four generated audit assignments active. Stage blocking assignments without enforcement.
+  managementGroupDoNotEnforcePolicyAssignments: [
+    'Deny-Classic-Resources'
+    'Deny-UnmanagedDisk'
+    'Enforce-ACSB'
+  ]
+  // Resource-deploying assignments are withheld until existing services and costs are reviewed.
+  managementGroupExcludedPolicyAssignments: [
+    'Deploy-ASC-Monitoring'
+    'Deploy-AzActivity-Log'
+    'Deploy-Diag-LogsCat'
+    'Deploy-MCSB2-Monitoring'
+    'Deploy-MDEndpoints'
+    'Deploy-MDEndpointsAMA'
+    'Deploy-MDFC-Config-H224'
+    'Deploy-MDFC-OssDb'
+    'Deploy-MDFC-SqlAtp'
+    'Deploy-SvcHealth-BuiltIn'
+  ]
   customerRbacRoleDefs: []
   customerRbacRoleAssignments: []
   customerPolicyDefs: []
